@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Peserta;
+use Illuminate\Http\Request;
+
+class PesertaController extends Controller
+{
+    public function index()
+    {
+        $peserta = Peserta::all();
+        return view('peserta.index', compact('peserta'));
+    }
+
+    public function create()
+    {
+        return view('peserta.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'instansi' => 'required',
+            'kontak' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        Peserta::create($request->all());
+        return redirect()->route('peserta.index');
+    }
+
+ public function edit($id)
+{
+    $peserta = Peserta::findOrFail($id);
+    return view('peserta.edit', compact('peserta'));
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'nama'     => 'required',
+        'instansi' => 'required',
+        'kontak'   => 'required',
+        'email'    => 'required|email',
+    ]);
+
+    $peserta = Peserta::findOrFail($id);
+    $peserta->update($request->all());
+
+    return redirect()->route('peserta.index');
+}
+
+    public function destroy(Peserta $peserta)
+    {
+        $peserta->delete();
+        return redirect()->route('peserta.index');
+    }
+}
