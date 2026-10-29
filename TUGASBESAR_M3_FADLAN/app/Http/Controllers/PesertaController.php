@@ -52,9 +52,11 @@ public function update(Request $request, $id)
     return redirect()->route('peserta.index');
 }
 
-    public function destroy(Peserta $peserta)
-    {
-        $peserta->delete();
-        return redirect()->route('peserta.index');
-    }
+    public function destroy($id)
+{
+    $peserta = Peserta::findOrFail($id);
+    $peserta->delete();
+
+    return redirect()->route('peserta.index');
+}
 }

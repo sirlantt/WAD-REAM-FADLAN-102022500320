@@ -11,36 +11,58 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 
-                <!-- Header di Luar Kotak / Card -->
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="fw-bold text-primary m-0">Tambah Peserta Baru</h3>
+                <!-- Header di Luar Card -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-bold text-primary m-0">
+                        <i class="bi bi-person-plus-fill me-2"></i>Tambah Peserta Baru
+                    </h3>
                     <a href="{{ route('peserta.index') }}" class="btn btn-primary fw-bold">
                         <i class="bi bi-arrow-left me-1"></i> Kembali ke Tabel
                     </a>
                 </div>
 
-                <!-- Card Form -->
-                <div class="card shadow-sm border-0 p-4">
-                    <form action="{{ route('peserta.store') }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">NAMA LENGKAP</label>
-                            <input type="text" name="nama" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">INSTANSI / KAMPUS</label>
-                            <input type="text" name="instansi" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">NO. WHATSAPP</label>
-                            <input type="text" name="kontak" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">EMAIL</label>
-                            <input type="email" name="email" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 fw-bold">Simpan Data</button>
-                    </form>
+                <!-- Card Form dengan Header Biru -->
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="m-0 fw-bold"><i class="bi bi-pencil-square me-2"></i>Formulir Data Peserta</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="{{ route('peserta.store') }}" method="POST">
+                            @csrf
+                            
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">
+                                    <i class="bi bi-person me-1"></i>NAMA LENGKAP
+                                </label>
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan nama lengkap" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">
+                                    <i class="bi bi-building me-1"></i>INSTANSI / KAMPUS
+                                </label>
+                                <input type="text" name="instansi" class="form-control" placeholder="Contoh: Telkom University" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">
+                                    <i class="bi bi-whatsapp me-1"></i>NO. WHATSAPP
+                                </label>
+                                <input type="text" name="kontak" class="form-control" placeholder="Contoh: 08123456789" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label small fw-bold">
+                                    <i class="bi bi-envelope me-1"></i>EMAIL
+                                </label>
+                                <input type="email" name="email" class="form-control" placeholder="Contoh: peserta@email.com" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
+                                <i class="bi bi-check-circle-fill me-1"></i> Simpan Data
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
             </div>
